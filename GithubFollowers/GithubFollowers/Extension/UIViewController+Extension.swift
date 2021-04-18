@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    // ui element니까 
+    // ui element니까
     func presentGFAlertOnMainThread(title: String, message: String, buttonTitle: String) {
         DispatchQueue.main.async {
             let alertVC = GFAlertViewController(title: title, message: message, buttonTitle: buttonTitle)
