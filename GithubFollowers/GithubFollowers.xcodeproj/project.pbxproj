@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C625F0F6262DA750002CBC3A /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C625F0F5262DA750002CBC3A /* ErrorMessage.swift */; };
 		C69D29AF2626D2DF0027A9E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D29AE2626D2DF0027A9E3 /* AppDelegate.swift */; };
 		C69D29B12626D2DF0027A9E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69D29B02626D2DF0027A9E3 /* SceneDelegate.swift */; };
 		C69D29B82626D2E80027A9E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C69D29B72626D2E80027A9E3 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C625F0F5262DA750002CBC3A /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		C69D29AB2626D2DF0027A9E3 /* GithubFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C69D29AE2626D2DF0027A9E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C69D29B02626D2DF0027A9E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C625F0F4262DA731002CBC3A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C625F0F5262DA750002CBC3A /* ErrorMessage.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		C69D29A22626D2DE0027A9E3 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +86,7 @@
 		C69D29AD2626D2DF0027A9E3 /* GithubFollowers */ = {
 			isa = PBXGroup;
 			children = (
+				C625F0F4262DA731002CBC3A /* Utilities */,
 				C6F3C35C262C682F0031D3CC /* Managers */,
 				C6F3C355262C62530031D3CC /* Model */,
 				C6F3C353262C39A20031D3CC /* Support */,
@@ -221,6 +232,7 @@
 				C69D29C72626DFC70027A9E3 /* SearchViewController.swift in Sources */,
 				C69D29CE262818980027A9E3 /* GFButton.swift in Sources */,
 				C6F3C33B262C0FE60031D3CC /* FollowerListViewController.swift in Sources */,
+				C625F0F6262DA750002CBC3A /* ErrorMessage.swift in Sources */,
 				C6F3C342262C1AEF0031D3CC /* GFBodyLabel.swift in Sources */,
 				C6F3C357262C62670031D3CC /* Follower.swift in Sources */,
 				C69D29AF2626D2DF0027A9E3 /* AppDelegate.swift in Sources */,
