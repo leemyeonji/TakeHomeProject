@@ -13,37 +13,37 @@ class NetworkManager {
     let baseURL = "https://api.github.com/users/"
     
     private init() {}
-    // data 를 [Followers], 에러를 그냥 옵셔널 string으로
-    func getFollowers(for username: String, page: Int, completed: @escaping ([Follower]?, ErrorMessage?) -> Void) {
+
+    func getFollowers(for username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void) {
         let endpoint = baseURL + "\(username)/followers?per_page=100&page=\(page)"
         
         // error handling !
         guard let url = URL(string: endpoint) else {
-            completed(nil, .invalidUsername)
+            completed(.failure(.invalidUsername))
             return
         }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             if let _ = error {
-                completed(nil, .unableToComplete)
+                completed(.failure(.unableToComplete))
                 return
             }
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completed(nil, .invalidResponse)
+                completed(.failure(.invalidResponse))
                 return
             }
             guard let data = data else {
-                completed(nil, .invalidData)
+                completed(.failure(.invalidData))
                 return
             }
             // 후 ! 드디어 받은 데이터를 파싱
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let followers = try? decoder.decode([Follower].self, from: data)
-                completed(followers, nil)
+                let followers = try decoder.decode([Follower].self, from: data)
+                completed(.success(followers))
             } catch {
-                completed(nil, .invalidData)
+                completed(.failure(.invalidData))
             }
         }
         task.resume()

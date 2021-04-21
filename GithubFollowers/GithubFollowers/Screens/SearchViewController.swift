@@ -18,7 +18,6 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        // view 가 이미 로드 되었다. 한 번 호출
         configureLogoImageView()
         configureTextField()
         configureCallToActionButton()
