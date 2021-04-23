@@ -4,13 +4,14 @@
 //
 //  Created by 임현지 on 2021/04/18.
 //
-
+import UIKit
 import Foundation
 
 class NetworkManager {
     
     static let shared = NetworkManager()
-    let baseURL = "https://api.github.com/users/"
+    private let baseURL = "https://api.github.com/users/"
+    let cache = NSCache<NSString, UIImage>()
     
     private init() {}
 
