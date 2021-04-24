@@ -16,6 +16,11 @@ class FollowerListViewController: UIViewController {
     var username : String!
     
     var followers: [Follower] = []
+    
+    var page: Int = 1
+    
+    var hasMoreFollower = true
+    
     var collectionView : UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     
@@ -23,7 +28,7 @@ class FollowerListViewController: UIViewController {
         super.viewDidLoad()
         configureCollectionView()
         configureViewController()
-        getFollowers()
+        getFollowers(userName: username, page: page)
         configureDataSource()
     }
     
@@ -40,17 +45,20 @@ class FollowerListViewController: UIViewController {
     func configureCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeFlowLayout(in: view))
         view.addSubview(collectionView)
+        collectionView.delegate = self
         collectionView.backgroundColor = .systemBackground
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
     }
     
-    func getFollowers() {
+    func getFollowers(userName: String, page: Int) {
         // networkmanager 와 followerVC(self) 간의 강한 참조에서 메모리 누수가 발생! weak 사용. 근데 weak 는 옵셔널임
-        NetworkManager.shared.getFollowers(for: username, page: 1) { [weak self] result in
+        NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
             guard let self = self else { return }
+            
             switch result {
             case .success(let followers):
-                self.followers = followers
+                if followers.count < 100 { self.hasMoreFollower = false }
+                self.followers.append(contentsOf: followers)
                 self.updateData()
                 
             case .failure(let error):
@@ -74,6 +82,23 @@ class FollowerListViewController: UIViewController {
         DispatchQueue.main.async {
             self.dataSource.apply(snapShot, animatingDifferences: true)
         }
-        
+    }
+}
+
+extension FollowerListViewController: UICollectionViewDelegate {
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.size.height
+        //        delegate 정해주기
+        //        print("OffsetY = \(offsetY)")
+        //        print("ContentHeight = \(contentHeight)")
+        //        print("Height = \(height)")
+        if offsetY > contentHeight - height {
+            guard hasMoreFollower else { return }
+            page += 1
+            getFollowers(userName: username, page: page)
+        }
     }
 }
