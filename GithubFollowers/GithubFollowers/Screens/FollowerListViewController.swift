@@ -52,9 +52,8 @@ class FollowerListViewController: UIViewController {
     
     func getFollowers(userName: String, page: Int) {
         showLoadingView()
-        // networkmanager 와 followerVC(self) 간의 강한 참조에서 메모리 누수가 발생! weak 사용. 근데 weak 는 옵셔널임
+        // networkmanager 와 followerVC(self) 간의 강한 참조에서 메모리 누수가 발생! weak 사용. weak 는 옵셔널임 
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
-            #warning("Call Dismiss")
             guard let self = self else { return }
             self.dismissLoadingView()
             
@@ -62,6 +61,12 @@ class FollowerListViewController: UIViewController {
             case .success(let followers):
                 if followers.count < 100 { self.hasMoreFollower = false }
                 self.followers.append(contentsOf: followers)
+                
+                if followers.isEmpty {
+                    let message = "This user doesn't have any followers. Go follow them 🧞‍♂️"
+                    DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
+                    return
+                }
                 self.updateData()
                 
             case .failure(let error):

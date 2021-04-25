@@ -46,10 +46,15 @@ extension UIViewController {
     }
     
     func dismissLoadingView() {
-        // Network call 에서 실행하는 거니까 메인 큐로 보내는 거죠? 아시겠어요?
         DispatchQueue.main.async {
             containerView.removeFromSuperview()
             containerView = nil
         }
+    }
+    
+    func showEmptyStateView(with message: String, in view: UIView) {
+        let emptyStateView = GFEmptyStateView(message: message)
+        emptyStateView.frame = view.bounds
+        view.addSubview(emptyStateView)
     }
 }
