@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C60AE032263598FD00B3515D /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60AE031263598FD00B3515D /* GFEmptyStateView.swift */; };
+		C60AE0672636E54000B3515D /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60AE0662636E54000B3515D /* UserInfoViewController.swift */; };
 		C625F0F6262DA750002CBC3A /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C625F0F5262DA750002CBC3A /* ErrorMessage.swift */; };
 		C625F138262F0C3D002CBC3A /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C625F137262F0C3D002CBC3A /* FollowerCell.swift */; };
 		C625F13B262F0E23002CBC3A /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C625F13A262F0E23002CBC3A /* GFAvatarImageView.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		C60AE031263598FD00B3515D /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
+		C60AE0662636E54000B3515D /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		C625F0F5262DA750002CBC3A /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		C625F137262F0C3D002CBC3A /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		C625F13A262F0E23002CBC3A /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				C69D29C92626DFF80027A9E3 /* FavoritesListViewController.swift */,
 				C6F3C33A262C0FE60031D3CC /* FollowerListViewController.swift */,
 				C69D29C62626DFC70027A9E3 /* SearchViewController.swift */,
+				C60AE0662636E54000B3515D /* UserInfoViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				C60AE032263598FD00B3515D /* GFEmptyStateView.swift in Sources */,
 				C6F3C35E262C685C0031D3CC /* NetworkManager.swift in Sources */,
 				C69D29CA2626DFF80027A9E3 /* FavoritesListViewController.swift in Sources */,
+				C60AE0672636E54000B3515D /* UserInfoViewController.swift in Sources */,
 				C6F3C34B262C1DB80031D3CC /* GFTitleLabel.swift in Sources */,
 				C69D29B12626D2DF0027A9E3 /* SceneDelegate.swift in Sources */,
 			);

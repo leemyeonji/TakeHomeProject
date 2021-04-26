@@ -24,6 +24,7 @@ class GFEmptyStateView: UIView {
     init(message: String) {
         super.init(frame: .zero)
         messageLabel.text = message
+        configure()
     }
     
     private func configure() {
@@ -37,7 +38,7 @@ class GFEmptyStateView: UIView {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -150),
+            messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -100),
             messageLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 40),
             messageLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
             messageLabel.heightAnchor.constraint(equalToConstant: 200),

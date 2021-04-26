@@ -23,6 +23,8 @@ class FollowerListViewController: UIViewController {
     
     var hasMoreFollower = true
     
+    var isSearching = false
+    
     var collectionView : UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     
@@ -73,7 +75,6 @@ class FollowerListViewController: UIViewController {
             case .success(let followers):
                 if followers.count < 100 { self.hasMoreFollower = false }
                 self.followers.append(contentsOf: followers)
-                
                 if self.followers.isEmpty {
                     let message = "This user doesn't have any followers. Go follow them 🧞‍♂️"
                     DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
@@ -121,17 +122,31 @@ extension FollowerListViewController: UICollectionViewDelegate {
             getFollowers(userName: username, page: page)
         }
     }
+    
+    // Item 탭 했을 때 -> userInfoVC로.. modal 로
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // 복잡한 것이, 검색한 follower의 인덱스패스는 어떻게 할거냐 이말이야 그래서 flag 하나 세워뒀다 이말이야. isSearching
+        let activeArray = isSearching ? filteredFollwers : followers
+        let follower = activeArray[indexPath.item]
+        
+        let destVC = UserInfoViewController()
+        destVC.username = follower.login
+        let navController = UINavigationController(rootViewController: destVC)
+        present(navController, animated: true)
+    }
 }
 
 extension FollowerListViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
+        isSearching = true
         filteredFollwers = followers.filter{ $0.login.lowercased().contains(filter.lowercased()) }
         updateData(on: filteredFollwers)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
         updateData(on: followers)
     }
     
