@@ -9,20 +9,13 @@ import UIKit
 
 class FollowerListViewController: UIViewController {
 
-    enum Section {
-        case main
-    }
+    enum Section { case main }
     
     var username : String!
-    
     var followers: [Follower] = []
-    
     var filteredFollwers: [Follower] = []
-    
     var page: Int = 1
-    
     var hasMoreFollower = true
-    
     var isSearching = false
     
     var collectionView : UICollectionView!
