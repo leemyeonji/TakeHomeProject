@@ -31,6 +31,7 @@ class GFUserInfoHeaderViewController: UIViewController {
         super.viewDidLoad()
         addSubview()
         layoutUI()
+        configureUIElement()
     }
 
     func configureUIElement() {
