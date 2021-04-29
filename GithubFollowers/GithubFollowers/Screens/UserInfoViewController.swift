@@ -12,6 +12,8 @@ class UserInfoViewController: UIViewController {
     let headerView = UIView()
     let itemViewOne = UIView()
     let itemViewTwo = UIView()
+    let dateLabel = GFBodyLabel(textAlignment: .center)
+    var itemViews : [UIView] = []
     
     var username : String!
     
@@ -19,6 +21,7 @@ class UserInfoViewController: UIViewController {
         super.viewDidLoad()
         layoutUI()
         configureViewController()
+        getUserInfo()
     }
    
     
@@ -38,6 +41,9 @@ class UserInfoViewController: UIViewController {
                 //print(user)
                 DispatchQueue.main.async {
                     self.add(childVC: GFUserInfoHeaderViewController(user: user), to: self.headerView)
+                    self.add(childVC: GFRepoItemVC(user: user), to: self.itemViewOne)
+                    self.add(childVC: GFFollowerItemVC(user: user), to: self.itemViewTwo)
+                    self.dateLabel.text = "Github Since \(user.createdAt.convertToDisplayFormat())"
                 }
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "OK")
@@ -47,45 +53,51 @@ class UserInfoViewController: UIViewController {
 
 
     func layoutUI() {
+        itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]
         let padding: CGFloat = 20
         let itemHeight: CGFloat = 140
         
-        view.addSubview(headerView)
+        for itemView in itemViews {
+            view.addSubview(itemView)
+            itemView.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                itemView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+                itemView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
+            ])
+        }
+        
+ /*     view.addSubview(headerView)
         view.addSubview(itemViewOne)
         view.addSubview(itemViewTwo)
-        
         headerView.translatesAutoresizingMaskIntoConstraints = false
         itemViewOne.translatesAutoresizingMaskIntoConstraints = false
-        itemViewTwo.translatesAutoresizingMaskIntoConstraints = false
+        itemViewTwo.translatesAutoresizingMaskIntoConstraints = false    */
+        
         
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor), // 이미 set 해 놓아서 constant 필요 없음
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 180),
             
             itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
-            itemViewOne.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            itemViewOne.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             itemViewOne.heightAnchor.constraint(equalToConstant: itemHeight),
             
             itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: padding),
-            itemViewTwo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            itemViewTwo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight)
+            itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight),
+            
+            dateLabel.topAnchor.constraint(equalTo: itemViewTwo.bottomAnchor, constant: padding * 2),
+            dateLabel.heightAnchor.constraint(equalToConstant: 18)
         ])
     }
     
-    func add(childVC: UIViewController, to containerVIew: UIView) {
+    func add(childVC: UIViewController, to containerView: UIView) {
         addChild(childVC)
-        containerVIew.addSubview(childVC.view)
-        childVC.view.frame = containerVIew.bounds
+        containerView.addSubview(childVC.view)
+        childVC.view.frame = containerView.bounds
         childVC.didMove(toParent: self)
     }
     
     @objc func dismissVC() {
         dismiss(animated: true)
     }
-
-    
 }

@@ -18,5 +18,5 @@ struct User: Codable {
     let htmlUrl: String
     let following: Int
     let followers: Int
-    let createdAt: String
+    let createdAt: String // String -> Date -> String ....... 두 개의 extension 파일 만들어야할 필요가 있네요
 }
