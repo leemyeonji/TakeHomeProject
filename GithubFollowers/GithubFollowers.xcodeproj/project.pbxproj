@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C6092E11263AA2EC00A38077 /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6092E10263AA2EC00A38077 /* GFItemInfoView.swift */; };
 		C6092E13263AC52D00A38077 /* GFItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6092E12263AC52D00A38077 /* GFItemInfoViewController.swift */; };
+		C6092E15263AC7F100A38077 /* GFRepoItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6092E14263AC7F100A38077 /* GFRepoItemVC.swift */; };
+		C6092E17263ACA6500A38077 /* GFFollowerItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6092E16263ACA6500A38077 /* GFFollowerItemVC.swift */; };
 		C60AE032263598FD00B3515D /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60AE031263598FD00B3515D /* GFEmptyStateView.swift */; };
 		C60AE0672636E54000B3515D /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60AE0662636E54000B3515D /* UserInfoViewController.swift */; };
 		C625F0F6262DA750002CBC3A /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C625F0F5262DA750002CBC3A /* ErrorMessage.swift */; };
@@ -39,6 +41,8 @@
 /* Begin PBXFileReference section */
 		C6092E10263AA2EC00A38077 /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
 		C6092E12263AC52D00A38077 /* GFItemInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoViewController.swift; sourceTree = "<group>"; };
+		C6092E14263AC7F100A38077 /* GFRepoItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFRepoItemVC.swift; sourceTree = "<group>"; };
+		C6092E16263ACA6500A38077 /* GFFollowerItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFFollowerItemVC.swift; sourceTree = "<group>"; };
 		C60AE031263598FD00B3515D /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
 		C60AE0662636E54000B3515D /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		C625F0F5262DA750002CBC3A /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
@@ -79,6 +83,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C6092E18263ACB3600A38077 /* ItemInfoVCs */ = {
+			isa = PBXGroup;
+			children = (
+				C6092E12263AC52D00A38077 /* GFItemInfoViewController.swift */,
+				C6092E14263AC7F100A38077 /* GFRepoItemVC.swift */,
+				C6092E16263ACA6500A38077 /* GFFollowerItemVC.swift */,
+			);
+			path = ItemInfoVCs;
+			sourceTree = "<group>";
+		};
 		C60AE02B2635987000B3515D /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,9 +129,9 @@
 		C60AE02F2635989B00B3515D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C6092E18263ACB3600A38077 /* ItemInfoVCs */,
 				C6F3C344262C1C630031D3CC /* GFAlertViewController.swift */,
 				C6552C362637E685007F3B56 /* GFUserInfoHeaderViewController.swift */,
-				C6092E12263AC52D00A38077 /* GFItemInfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -322,6 +336,7 @@
 				C69D29CE262818980027A9E3 /* GFButton.swift in Sources */,
 				C6552C372637E685007F3B56 /* GFUserInfoHeaderViewController.swift in Sources */,
 				C6092E11263AA2EC00A38077 /* GFItemInfoView.swift in Sources */,
+				C6092E17263ACA6500A38077 /* GFFollowerItemVC.swift in Sources */,
 				C6F3C33B262C0FE60031D3CC /* FollowerListViewController.swift in Sources */,
 				C625F138262F0C3D002CBC3A /* FollowerCell.swift in Sources */,
 				C625F0F6262DA750002CBC3A /* ErrorMessage.swift in Sources */,
@@ -335,6 +350,7 @@
 				C6092E13263AC52D00A38077 /* GFItemInfoViewController.swift in Sources */,
 				C60AE0672636E54000B3515D /* UserInfoViewController.swift in Sources */,
 				C6F3C34B262C1DB80031D3CC /* GFTitleLabel.swift in Sources */,
+				C6092E15263AC7F100A38077 /* GFRepoItemVC.swift in Sources */,
 				C69D29B12626D2DF0027A9E3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
