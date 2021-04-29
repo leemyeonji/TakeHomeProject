@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C6092E11263AA2EC00A38077 /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6092E10263AA2EC00A38077 /* GFItemInfoView.swift */; };
+		C6092E13263AC52D00A38077 /* GFItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6092E12263AC52D00A38077 /* GFItemInfoViewController.swift */; };
 		C60AE032263598FD00B3515D /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60AE031263598FD00B3515D /* GFEmptyStateView.swift */; };
 		C60AE0672636E54000B3515D /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60AE0662636E54000B3515D /* UserInfoViewController.swift */; };
 		C625F0F6262DA750002CBC3A /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C625F0F5262DA750002CBC3A /* ErrorMessage.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		C6092E10263AA2EC00A38077 /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
+		C6092E12263AC52D00A38077 /* GFItemInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoViewController.swift; sourceTree = "<group>"; };
 		C60AE031263598FD00B3515D /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
 		C60AE0662636E54000B3515D /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		C625F0F5262DA750002CBC3A /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				C6F3C344262C1C630031D3CC /* GFAlertViewController.swift */,
 				C6552C362637E685007F3B56 /* GFUserInfoHeaderViewController.swift */,
+				C6092E12263AC52D00A38077 /* GFItemInfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				C60AE032263598FD00B3515D /* GFEmptyStateView.swift in Sources */,
 				C6F3C35E262C685C0031D3CC /* NetworkManager.swift in Sources */,
 				C69D29CA2626DFF80027A9E3 /* FavoritesListViewController.swift in Sources */,
+				C6092E13263AC52D00A38077 /* GFItemInfoViewController.swift in Sources */,
 				C60AE0672636E54000B3515D /* UserInfoViewController.swift in Sources */,
 				C6F3C34B262C1DB80031D3CC /* GFTitleLabel.swift in Sources */,
 				C69D29B12626D2DF0027A9E3 /* SceneDelegate.swift in Sources */,
