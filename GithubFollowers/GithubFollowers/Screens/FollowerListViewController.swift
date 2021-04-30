@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol FollowerListVCDelegate: AnyObject {
+    func didRequestFollowers(for username: String)
+}
+
 class FollowerListViewController: UIViewController {
 
     enum Section { case main }
@@ -124,6 +128,7 @@ extension FollowerListViewController: UICollectionViewDelegate {
         
         let destVC = UserInfoViewController()
         destVC.username = follower.login
+        destVC.delegate = self // FollowerListVC(Intern) is listening userInfoVC(Boss)
         let navController = UINavigationController(rootViewController: destVC)
         present(navController, animated: true)
     }
@@ -141,6 +146,23 @@ extension FollowerListViewController: UISearchResultsUpdating, UISearchBarDelega
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
         updateData(on: followers)
+    }
+    
+}
+
+extension FollowerListViewController : FollowerListVCDelegate {
+    // followerListVC 는 이 함수가 실행되길 기다린다... -> userInfoVC가 해줄거야
+    
+    func didRequestFollowers(for username: String) {
+        // get followers for that user
+        self.username = username
+        title = username
+        page = 1
+        followers.removeAll()
+        filteredFollwers.removeAll()
+        collectionView.setContentOffset(.zero, animated: true)
+        
+        getFollowers(userName: username, page: page)
     }
     
 }
