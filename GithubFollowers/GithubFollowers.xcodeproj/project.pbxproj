@@ -38,6 +38,7 @@
 		C6F3C357262C62670031D3CC /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3C356262C62670031D3CC /* Follower.swift */; };
 		C6F3C35A262C63340031D3CC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3C359262C63340031D3CC /* User.swift */; };
 		C6F3C35E262C685C0031D3CC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F3C35D262C685C0031D3CC /* NetworkManager.swift */; };
+		C6F40D9E263D3C3200DAB3CD /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F40D9D263D3C3200DAB3CD /* PersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		C6F3C356262C62670031D3CC /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		C6F3C359262C63340031D3CC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C6F3C35D262C685C0031D3CC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		C6F40D9D263D3C3200DAB3CD /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				C6F3C35D262C685C0031D3CC /* NetworkManager.swift */,
+				C6F40D9D263D3C3200DAB3CD /* PersistenceManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				C6552C3A2637E6E7007F3B56 /* GFSecondaryTitleLabel.swift in Sources */,
 				C60AE032263598FD00B3515D /* GFEmptyStateView.swift in Sources */,
 				C6F3C35E262C685C0031D3CC /* NetworkManager.swift in Sources */,
+				C6F40D9E263D3C3200DAB3CD /* PersistenceManager.swift in Sources */,
 				C69D29CA2626DFF80027A9E3 /* FavoritesListViewController.swift in Sources */,
 				C6092E13263AC52D00A38077 /* GFItemInfoViewController.swift in Sources */,
 				C60AE0672636E54000B3515D /* UserInfoViewController.swift in Sources */,
