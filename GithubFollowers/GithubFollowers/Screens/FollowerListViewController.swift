@@ -137,10 +137,7 @@ extension FollowerListViewController: UICollectionViewDelegate {
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         let height = scrollView.frame.size.height
-        //        delegate 정해주기
-        //        print("OffsetY = \(offsetY)")
-        //        print("ContentHeight = \(contentHeight)")
-        //        print("Height = \(height)")
+        
         if offsetY > contentHeight - height {
             guard hasMoreFollower else { return }
             page += 1
