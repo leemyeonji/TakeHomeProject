@@ -21,6 +21,7 @@ class FollowerListViewController: GFDataLoadingViewController {
     var page: Int = 1
     var hasMoreFollower = true
     var isSearching = false
+    var isLoadingMoreFollowers = false
     
     var collectionView : UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
@@ -68,7 +69,6 @@ class FollowerListViewController: GFDataLoadingViewController {
     func configureSearchController() {
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Search for a username"
         searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
@@ -76,6 +76,7 @@ class FollowerListViewController: GFDataLoadingViewController {
     
     func getFollowers(userName: String, page: Int) {
         showLoadingView()
+        isLoadingMoreFollowers = true
         // networkmanager 와 followerVC(self) 간의 참조에서 메모리 누수가 발생. weak 사용. weak 는 옵셔널임 
         NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
             guard let self = self else { return }
@@ -95,6 +96,7 @@ class FollowerListViewController: GFDataLoadingViewController {
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad Stuff Happend", message: error.rawValue, buttonTitle: "OK")
             }
+            self.isLoadingMoreFollowers = false
         }
     }
     
@@ -149,7 +151,7 @@ extension FollowerListViewController: UICollectionViewDelegate {
         let height = scrollView.frame.size.height
         
         if offsetY > contentHeight - height {
-            guard hasMoreFollower else { return }
+            guard hasMoreFollower, !isLoadingMoreFollowers else { return }
             page += 1
             getFollowers(userName: username, page: page)
         }
@@ -169,10 +171,16 @@ extension FollowerListViewController: UICollectionViewDelegate {
     }
 }
 
-extension FollowerListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+extension FollowerListViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else {
+            filteredFollwers.removeAll()
+            updateData(on: followers)
+            isSearching = false
+            return
+        }
+        
         isSearching = true
         filteredFollwers = followers.filter{ $0.login.lowercased().contains(filter.lowercased()) }
         updateData(on: filteredFollwers)
@@ -182,7 +190,6 @@ extension FollowerListViewController: UISearchResultsUpdating, UISearchBarDelega
         isSearching = false
         updateData(on: followers)
     }
-    
 }
 
 extension FollowerListViewController : FollowerListVCDelegate {
@@ -195,7 +202,7 @@ extension FollowerListViewController : FollowerListVCDelegate {
         page = 1
         followers.removeAll()
         filteredFollwers.removeAll()
-        collectionView.setContentOffset(.zero, animated: true)
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
         
         getFollowers(userName: username, page: page)
     }
