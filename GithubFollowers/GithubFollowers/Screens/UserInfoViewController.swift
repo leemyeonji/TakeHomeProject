@@ -56,18 +56,13 @@ class UserInfoViewController: GFDataLoadingViewController {
 
     
     func configureUIElements(with user : User) {
-        let repoItemVC = GFRepoItemVC(user: user)
-        repoItemVC.delegate = self
-        
-        let followerItemVC = GFFollowerItemVC(user: user)
-        followerItemVC.delegate = self
-        
         self.add(childVC: GFUserInfoHeaderViewController(user: user), to: self.headerView)
-        self.add(childVC: repoItemVC, to: self.itemViewOne)
-        self.add(childVC: followerItemVC, to: self.itemViewTwo)
+        self.add(childVC: GFRepoItemVC(user: user, delegate: self), to: self.itemViewOne)
+        self.add(childVC: GFFollowerItemVC(user: user, delegate: self), to: self.itemViewTwo)
         self.dateLabel.text = "Github Since \(user.createdAt.converToMonthYearFormat())"
     }
 
+    
     func layoutUI() {
         itemViews = [headerView, itemViewOne, itemViewTwo, dateLabel]
         let padding: CGFloat = 20
@@ -118,24 +113,25 @@ class UserInfoViewController: GFDataLoadingViewController {
     }
 }
 
-extension UserInfoViewController: ItemInfoVCDelegate {
+
+extension UserInfoViewController: GFRepoItemVCDelegate {
     func didTapGitHubProfile(for user: User) {
-        // Show safari view controller
         guard let url = URL(string: user.htmlUrl) else {
             presentGFAlertOnMainThread(title: "Invalid URL", message: "The URL attached to this user is invalid.", buttonTitle: "OK")
             return
         }
         presntSafariVC(with: url)
     }
-    
+}
+
+extension UserInfoViewController: GFFollowerItemVCDelegate {
     func didTapGetFollowers(for user: User) {
-        // dismissvc
-        // Tell follower list screen the new user
         guard user.followers != 0 else {
             presentGFAlertOnMainThread(title: "No Followers", message: "This user has no followers 😢.", buttonTitle: "So sad")
             return
         }
-        delegate.didRequestFollowers(for: user.login) // -> delegate 에게 알려주는 거죠?
+        delegate.didRequestFollowers(for: user.login) 
         dismissVC()
     }
 }
+
