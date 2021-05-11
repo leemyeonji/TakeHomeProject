@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ItemInfoVCDelegate: AnyObject {
+    func didTapGitHubProfile(for user: User)
+    func didTapGetFollowers(for user: User)
+}
 // 우리가 만든 제네릭한 수퍼클래스 작고 귀엽다
 class GFItemInfoViewController: UIViewController {
 
@@ -16,7 +20,7 @@ class GFItemInfoViewController: UIViewController {
     let actionButton = GFButton()
     
     var user : User!
-    weak var delegate: UserInfoVCDelegate!
+    weak var delegate: ItemInfoVCDelegate!
     
     
     init(user: User) {
@@ -57,8 +61,7 @@ class GFItemInfoViewController: UIViewController {
     @objc func actionButtonTapped() {}
     
     private func layoutUI() {
-        view.addSubview(stackView)
-        view.addSubview(actionButton)
+        view.addSubviews(stackView, actionButton)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         let padding: CGFloat = 20

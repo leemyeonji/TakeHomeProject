@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol FollowerListVCDelegate: AnyObject {
-    func didRequestFollowers(for username: String)
-}
-
 class FollowerListViewController: GFDataLoadingViewController {
 
     enum Section { case main }
@@ -180,7 +176,6 @@ extension FollowerListViewController: UISearchResultsUpdating {
             isSearching = false
             return
         }
-        
         isSearching = true
         filteredFollwers = followers.filter{ $0.login.lowercased().contains(filter.lowercased()) }
         updateData(on: filteredFollwers)
@@ -192,8 +187,7 @@ extension FollowerListViewController: UISearchResultsUpdating {
     }
 }
 
-extension FollowerListViewController : FollowerListVCDelegate {
-    // followerListVC 는 이 함수가 실행되길 기다린다... -> userInfoVC가 해줄거야
+extension FollowerListViewController : UserInfoVCDelegate {
     
     func didRequestFollowers(for username: String) {
         // get followers for that user
@@ -206,5 +200,4 @@ extension FollowerListViewController : FollowerListVCDelegate {
         
         getFollowers(userName: username, page: page)
     }
-    
 }
