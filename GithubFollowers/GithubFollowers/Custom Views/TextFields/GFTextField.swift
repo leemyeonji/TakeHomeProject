@@ -29,7 +29,7 @@ class GFTextField: UITextField {
         tintColor = .label
         textAlignment = .center
         font = UIFont.preferredFont(forTextStyle: .title2)
-        adjustsFontSizeToFitWidth = true // 입력 텍스트가 엄청 길면 자동으로 관리해주는 거겠됴?
+        adjustsFontSizeToFitWidth = true 
         minimumFontSize = 12
         
         backgroundColor = .tertiarySystemBackground

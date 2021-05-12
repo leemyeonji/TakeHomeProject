@@ -11,6 +11,7 @@ protocol ItemInfoVCDelegate: AnyObject {
     func didTapGitHubProfile(for user: User)
     func didTapGetFollowers(for user: User)
 }
+
 // 우리가 만든 제네릭한 수퍼클래스 작고 귀엽다
 class GFItemInfoViewController: UIViewController {
 
@@ -20,6 +21,7 @@ class GFItemInfoViewController: UIViewController {
     let actionButton = GFButton()
     
     var user : User!
+    
     
     init(user: User) {
         super.init(nibName: nil, bundle: nil)
@@ -38,12 +40,12 @@ class GFItemInfoViewController: UIViewController {
         configureActionButton()
     }
     
+    
     private func configureBackgroundView() {
         view.layer.cornerRadius = 18
         view.backgroundColor = .secondarySystemBackground
     }
 
-    
     private func configureStackView() {
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing

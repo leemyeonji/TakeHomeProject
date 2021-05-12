@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C6005DB1264BBFD6005843F8 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6005DB0264BBFD6005843F8 /* UITableView+Extension.swift */; };
 		C6092E11263AA2EC00A38077 /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6092E10263AA2EC00A38077 /* GFItemInfoView.swift */; };
 		C6092E13263AC52D00A38077 /* GFItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6092E12263AC52D00A38077 /* GFItemInfoViewController.swift */; };
 		C6092E15263AC7F100A38077 /* GFRepoItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6092E14263AC7F100A38077 /* GFRepoItemVC.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C6005DB0264BBFD6005843F8 /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		C6092E10263AA2EC00A38077 /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
 		C6092E12263AC52D00A38077 /* GFItemInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoViewController.swift; sourceTree = "<group>"; };
 		C6092E14263AC7F100A38077 /* GFRepoItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFRepoItemVC.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				C6092E19263AEDC400A38077 /* Date+Extension.swift */,
 				C6092E1B263AEE3E00A38077 /* String+Extension.swift */,
 				C6E284FD264AC7F600098C02 /* UIView+Extension.swift */,
+				C6005DB0264BBFD6005843F8 /* UITableView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				C6E284FE264AC7F600098C02 /* UIView+Extension.swift in Sources */,
 				C69D29CE262818980027A9E3 /* GFButton.swift in Sources */,
 				C6552C372637E685007F3B56 /* GFUserInfoHeaderViewController.swift in Sources */,
+				C6005DB1264BBFD6005843F8 /* UITableView+Extension.swift in Sources */,
 				C67F2004264817F20009DE47 /* GFDataLoadingViewController.swift in Sources */,
 				C6092E11263AA2EC00A38077 /* GFItemInfoView.swift in Sources */,
 				C6092E17263ACA6500A38077 /* GFFollowerItemVC.swift in Sources */,

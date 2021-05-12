@@ -13,6 +13,9 @@ protocol UserInfoVCDelegate: AnyObject {
 
 class UserInfoViewController: GFDataLoadingViewController {
 
+    let scrollView = UIScrollView()
+    let contentView = UIView()
+    
     let headerView = UIView()
     let itemViewOne = UIView()
     let itemViewTwo = UIView()
@@ -27,6 +30,7 @@ class UserInfoViewController: GFDataLoadingViewController {
         super.viewDidLoad()
         layoutUI()
         configureViewController()
+        configureScrollView()
         getUserInfo()
     }
    
@@ -36,15 +40,28 @@ class UserInfoViewController: GFDataLoadingViewController {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissVC))
         navigationItem.rightBarButtonItem = doneButton
     }
+     
+    
+    func configureScrollView() {
+        view.addSubviews(scrollView)
+        scrollView.addSubviews(contentView)
         
+        scrollView.pinToEdges(of: view)
+        contentView.pinToEdges(of: scrollView)
         
+        NSLayoutConstraint.activate([
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.heightAnchor.constraint(equalToConstant: 600)
+        ])
+    }
+    
+    
     func getUserInfo() {
         NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
             case .success(let user):
-                //print(user)
                 DispatchQueue.main.async {
                     self.configureUIElements(with: user)
                 }
@@ -69,12 +86,12 @@ class UserInfoViewController: GFDataLoadingViewController {
         let itemHeight: CGFloat = 140
         
         for itemView in itemViews {
-            view.addSubview(itemView)
+            contentView.addSubview(itemView)
             itemView.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
-                itemView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-                itemView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
+                itemView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+                itemView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding)
             ])
         }
         
@@ -85,9 +102,8 @@ class UserInfoViewController: GFDataLoadingViewController {
         itemViewOne.translatesAutoresizingMaskIntoConstraints = false
         itemViewTwo.translatesAutoresizingMaskIntoConstraints = false    */
         
-        
         NSLayoutConstraint.activate([
-            headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            headerView.topAnchor.constraint(equalTo: contentView.topAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 210),
             
             itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
