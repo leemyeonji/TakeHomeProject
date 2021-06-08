@@ -41,3 +41,6 @@ Sean Allen 의 Take home project 입니다.
   - 코드를 이용하여 childview를 subview로 만들었습니다
 
 **Persistance, UITableView, UIStackView, DateFormatter**
+
+**Optimization**
+  - 기능 구현 이후로 자주 사용하는 코드를 함수로 정리하고 UI 버그에 대응했습니다.  
